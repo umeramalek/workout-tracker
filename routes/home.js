@@ -16,6 +16,18 @@ router.get('/workouts', async(req,res) => {
     }
 })
 
+// Create a workout
+router.post('/workouts', (req, res) => {
+    console.log(req.body);
+    db.Workout.create({}).then(workoutData => {
+        res.json(workoutData);
+        console.log(workoutData);
+    }).catch(err => {
+        res.json(err);
+    })
+});
+
+
 
 
 module.exports = router;
