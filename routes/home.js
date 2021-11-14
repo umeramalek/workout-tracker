@@ -27,6 +27,15 @@ router.post('/workouts', (req, res) => {
     })
 });
 
+// Get workouts of 7 days
+router.get('/workouts/range', (req, res) => {
+    db.Workout.aggregate([{$addFields: {totalDuration: {$sum: "$exercises.duration"}}}]).limit(7).then(workoutData => {
+        res.json(workoutData);
+    }).catch(err => {
+        res.json(err);
+    })
+});
+
 
 
 
