@@ -36,6 +36,14 @@ router.get('/workouts/range', (req, res) => {
     })
 });
 
+// Update a workout
+router.put('/workouts/:id', (req, res) => {
+    db.Workout.findByIdAndUpdate({_id: req.params.id}, {exercise: req.body}).then((workoutData) => {
+        res.json(workoutData);
+    }).catch(err => {
+        res.json(err);
+    })
+});
 
 
 
