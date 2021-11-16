@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const logger = require('morgan');
 
 // connect to the port 
 const PORT = process.env.PORT || 3000;
