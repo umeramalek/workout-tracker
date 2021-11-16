@@ -27,6 +27,16 @@ router.post('/workouts', (req, res) => {
     })
 });
 
+
+// Update workout/put method/by id
+router.put('/workouts/:id', (req, res) => {
+    db.Workout.findByIdAndUpdate(req.params.id, {$push: {exercises: req.body}}, {new:true, runValidators:true}).then((workoutData) => {
+        res.json(workoutData);
+    }).catch(err => {
+        res.json(err);
+    })
+});
+
 // Get workouts of 7 days
 router.get('/workouts/range', (req, res) => {
     db.Workout.aggregate([{$addFields: {totalDuration: {$sum: "$exercises.duration"}}}]).limit(7).then(workoutData => {
@@ -36,14 +46,6 @@ router.get('/workouts/range', (req, res) => {
     })
 });
 
-// Update a workout
-router.put('/workouts/:id', (req, res) => {
-    db.Workout.findByIdAndUpdate({_id: req.params.id}, {exercise: req.body}).then((workoutData) => {
-        res.json(workoutData);
-    }).catch(err => {
-        res.json(err);
-    })
-});
 
 
 
