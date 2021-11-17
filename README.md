@@ -9,8 +9,10 @@ Workout tracker is a daily workout tracker. As a user I am able to log multiple 
 
 
 ## Usage 
-1. generate database with "nodemon server.js"
- 2. (note: if link hasn't been visited in a while it may take a minute for Heroku to launch the website)
+1. run the mongo database by command line "mongo"
+2. run the seeds by command "npm run seed"
+3. generate database with "npm start"
+4. (note: if link hasn't been visited in a while it may take a minute for Heroku to launch the website)
 
 ## Mock Up
 ![](assets/workout-giphy.gif)
